@@ -1,6 +1,7 @@
 /* The demo carousel, moved here from the Arkaya Labs site. It advances by itself and pauses when touched.
    To add a recording: set videoSrc (an MP4 under assets/demos/) and posterSrc (its first frame). A configured video
-   replaces the whole app preview. A new demo also needs its tab button in index.html. */
+   replaces the whole app preview and plays to its end before the carousel moves on. A new demo also needs its tab
+   button in index.html. */
 (() => {
   'use strict';
   const demos = [
@@ -13,12 +14,12 @@
       caption: 'Larch picks the passages that matter and reads the papers side by side.'
     },
     {
-      key: 'web', videoSrc: '', posterSrc: '',
+      key: 'web', videoSrc: 'assets/demos/research.mp4', posterSrc: 'assets/demos/research-poster.jpg',
       attachment: 'Web search on',
       question: 'Find an answer and show me the sources.',
       activity: 'Looking for sources', detail: 'Reading the pages it found',
-      title: 'An answer with somewhere to look.',
-      caption: 'Larch searches the web, reads the pages and links each source.'
+      title: 'Research, start to finish.',
+      caption: 'Larch plans the research, splits it across helpers that read the web at the same time, checks the quotes and writes a report with its sources. Parts sped up, waits trimmed; the full run took about 3.5 minutes.'
     }
   ];
 
@@ -52,6 +53,7 @@
   let scrollFrame = false;
   let lastWidth = 0;
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const playsVideo = state => Boolean(state.demo.videoSrc) && !failedVideos.has(state.demo.key);
   const states = [];
 
   // End clones let either arrow cross the first/last boundary seamlessly.
@@ -85,9 +87,16 @@
       if (!state.video.hidden) {
         failedVideos.add(demo.key);
         updatePlayback();
+        scheduleAutomatic();
       }
     });
     state.video.addEventListener('playing',()=>{state.start.hidden=true;});
+    // A recording moves the carousel on when it ends, unless someone is watching closely; then it plays again.
+    state.video.addEventListener('ended',()=>{
+      if (state.slot!==currentSlot) return;
+      if (manualInteraction || hovering || focused) { state.video.currentTime=0; updatePlayback(); }
+      else moveRelative(1,false);
+    });
     state.start.addEventListener('click',()=>{
       stopAutomatic(); paused=false; updatePlayback();
     });
@@ -116,6 +125,7 @@
   function scheduleAutomatic() {
     clearAutomatic();
     if (manualInteraction || reduced || paused || !inView || document.hidden || hovering || focused || dragging) return;
+    if (playsVideo(states[currentSlot])) return;  // the recording's 'ended' moves on instead
     autoTimer=setTimeout(()=>{
       autoTimer=null;
       moveRelative(1,false);
@@ -127,9 +137,9 @@
     const allow=!paused && inView && !document.hidden;
     states.forEach(state=>{
       const selected=state.slot===currentSlot;
-            const src='assets/demos/'+state.demo.key+(allow && selected?'.gif':'-still.png');
+      const src='assets/demos/'+state.demo.key+(allow && selected && !playsVideo(state)?'.gif':'-still.png');
       if (state.image.getAttribute('src')!==src) state.image.src=src;
-      const useVideo=selected && state.demo.videoSrc && !failedVideos.has(state.demo.key);
+      const useVideo=selected && playsVideo(state);
       state.video.hidden=!useVideo;
       state.app.hidden=Boolean(useVideo);
       state.start.hidden=true;
@@ -149,7 +159,7 @@
       }
     });
     const state=states[currentSlot];
-    note.textContent=state.demo.videoSrc && !failedVideos.has(state.demo.key)?'Recorded demo':'Animated interface concept · recordings coming soon';
+    note.textContent=playsVideo(state)?'Recorded on an Apple M5 · parts sped up, waits trimmed':'Animated interface concept · recordings coming soon';
     if (motionButton) { motionButton.textContent=paused?'Play motion':'Pause motion'; motionButton.setAttribute('aria-pressed',String(paused)); }
   }
 
