@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" class="page-larch">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3ebdc">
+<meta name="description" content="Larch runs open models on your own computer, with a desktop app, an agent and a local API. Free and open source, from Arkaya Labs.">
+<title>Larch: fast, private AI on your own computer</title>
+<link rel="icon" href="assets/larch-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="theme.js"></script>
+<link rel="preload" as="image" href="assets/larch.small.webp">
+<link rel="preload" as="image" href="assets/larch.night.small.webp">
+<link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
+<script src="demos.js" defer></script>
+</head>
+<body>
+<div id="arkaya-site">
+<div class="ark-page">
+<div class="ark-landscape" aria-hidden="true"><div class="ark-landscape-image ark-landscape-day"></div><div class="ark-landscape-image ark-landscape-night"></div></div>
+<div class="ark-wash" aria-hidden="true"></div>
+<div class="ark-content">
+<header class="ark-header">
+  <a class="ark-brand" href="index.html" aria-label="Larch, home"><span class="mkw"><img class="mk light" src="assets/larch-mark.svg" alt=""><img class="mk dark" src="assets/larch-mark-dark.svg" alt=""></span>Larch</a>
+  <nav aria-label="Site"><a class="lx-wide" href="#features">Features</a><a class="lx-wide" href="#developers">Developers</a><a href="https://arkaya-labs.com">Arkaya Labs</a><button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="bite"><rect width="24" height="24" fill="#fff"/><circle class="bite" cx="30" cy="4" r="7" fill="#000"/></mask></defs><g class="rays" stroke-linecap="round" fill="none"><path d="M12 1.5v2.4M12 20.1v2.4M1.5 12h2.4M20.1 12h2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M19.4 4.6l-1.7 1.7M6.3 17.7l-1.7 1.7"/></g><circle class="disc" cx="12" cy="12" r="5.6" mask="url(#bite)"/></svg></button></nav>
+</header>
+<main>
+<section class="ark-hero" id="ark-top">
+  <div class="ark-hero-main">
+    <div class="ark-eyebrow">FROM ARKAYA LABS</div>
+    <h1>Larch</h1>
+    <p class="ark-intro">Fast, private AI on the computer you already own. Larch runs open models on your Mac or PC, with a desktop app, an agent and a local API.</p>
+    <p class="lx-launch">Open source on Thanksgiving, 26 November.</p>
+    <div class="ark-cta"><a class="btn" href="#features">What it does<svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2c4.4-.3 9-.3 13.8 0"/><path d="M13.6 7.4c1.4 1.9 3 3.5 4.9 4.8-1.9 1.2-3.5 2.8-4.9 4.6"/></svg></a><a class="btn ghost" href="#developers">For developers</a></div>
+  </div>
+</section>
+
+<section class="ark-demos" id="ark-demos" aria-labelledby="ark-demo-title">
+  <h2 id="ark-demo-title" class="ark-sr-only">Larch on your computer</h2>
+  <div class="ark-gallery-nav">
+    <div class="ark-task-tabs" role="group" aria-label="Choose a demo">
+      <button type="button" class="cursor-interaction" data-demo="0" aria-pressed="true">Documents</button>
+      <button type="button" class="cursor-interaction" data-demo="1" aria-pressed="false">Web research</button>
+    </div>
+  </div>
+  <div class="ark-carousel" role="region" aria-roledescription="carousel" aria-label="Larch demonstrations">
+    <div class="ark-track"></div>
+    <div class="ark-arrows">
+      <button type="button" class="cursor-interaction ark-prev" data-direction="-1" aria-label="Previous demo"><svg class="ark-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2c4.4-.3 9-.3 13.8 0"/><path d="M13.6 7.4c1.4 1.9 3 3.5 4.9 4.8-1.9 1.2-3.5 2.8-4.9 4.6"/></svg></button>
+      <button type="button" class="cursor-interaction ark-next" data-direction="1" aria-label="Next demo"><svg class="ark-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2c4.4-.3 9-.3 13.8 0"/><path d="M13.6 7.4c1.4 1.9 3 3.5 4.9 4.8-1.9 1.2-3.5 2.8-4.9 4.6"/></svg><svg class="ark-timer" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23"/></svg></button>
+    </div>
+  </div>
+  <template id="ark-demo-template">
+  <div class="ark-media-stage">
+  <video class="ark-recording" muted loop playsinline preload="metadata" aria-label="Larch demo recording" hidden></video>
+  <button class="ark-video-start" type="button" hidden>Play demo</button>
+  <div class="ark-app" aria-label="Larch interface concept">
+    <aside class="ark-sidebar">
+      <div class="ark-app-brand">Larch</div>
+      <div class="ark-new">＋ &nbsp; New chat</div>
+      <div class="ark-sidebar-item ark-current">Home</div>
+      <div class="ark-sidebar-item">Chats</div>
+      <div class="ark-sidebar-item">Tasks</div>
+      <div class="ark-sidebar-item">Models</div>
+      <div class="ark-sidebar-item">Tools</div>
+      <div class="ark-sidebar-item">Settings</div>
+      <div class="ark-sidebar-note">Interface concept</div>
+    </aside>
+    <div class="ark-conversation">
+      <div class="ark-app-top"><span>New chat</span><span class="ark-status">Larch <span>·</span> on this computer</span></div>
+      <div class="ark-attachment">Attached papers · 4 PDFs</div>
+      <div class="ark-user-message">Summarize the papers in here.</div>
+      <div class="ark-assistant-label">Larch</div>
+      <div class="ark-activity">
+        <div class="ark-activity-title">Reading papers</div>
+        <img src="assets/demos/papers.gif" class="ark-demo-motion" width="600" height="144" alt="Animated concept of Larch picking the relevant sections of four papers">
+        <div class="ark-activity-detail">Picking the relevant passages</div>
+      </div>
+      <div class="ark-composer"><span>＋</span><span>Ask anything</span><span aria-hidden="true">↑</span></div>
+    </div>
+  </div>
+  </div>
+  </template>
+  <noscript><p class="ark-preview-note">Turn on JavaScript to browse the animated demos.</p></noscript>
+  <div class="ark-caption" aria-live="off">
+    <h3>Four papers, one request.</h3>
+    <p>Larch picks the passages that matter and reads the papers side by side.</p>
+  </div>
+  <div class="ark-preview-note">Animated interface concepts · recordings coming soon</div>
+</section>
+
+<section class="ark-section" id="features" aria-labelledby="features-title">
+  <div class="ark-head"><h2 id="features-title">What it does</h2></div>
+  <div class="pp-trio">
+    <div class="pp-card">
+      <span class="kind">Engine</span>
+      <h3 class="lx-card-title">Several chats at once</h3>
+      <p>One engine batches every open chat on the GPU, so a second chat, or the agent, doesn't wait in line behind the first.</p>
+    </div>
+    <div class="pp-card">
+      <span class="kind">Documents</span>
+      <h3 class="lx-card-title">Answers that cite the line</h3>
+      <p>Ask about a long PDF and Larch quotes the line it used, with the page, so you can check it. The file stays loaded, so a follow-up doesn't read it all again.</p>
+    </div>
+    <div class="pp-card">
+      <span class="kind">Private</span>
+      <h3 class="lx-card-title">Stays on your computer</h3>
+      <p>The model runs on your own machine, and your chats and files stay on its disk. Larch only goes online when you download a model or use a tool that needs the web. It sends no usage data or analytics.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ark-section" id="developers" aria-labelledby="dev-title">
+  <div class="lx-dev">
+    <div>
+      <span class="kind lx-kind">For developers</span>
+      <h2 id="dev-title">A local API</h2>
+      <p class="lede"><code>larch serve</code> starts a server on your own machine that speaks the OpenAI and Anthropic APIs. Many SDKs and tools work once you point their base URL at it.</p>
+      <p class="lede">It loads GGUF files of Llama 3.x, Mistral, Qwen 2.5, Qwen 3 and Qwen 3.5, dense and mixture-of-experts.</p>
+    </div>
+    <pre class="lx-term" aria-label="Terminal example"><span class="c">$ larch serve -m qwen3-8b-q4_k_m.gguf</span>
+<span class="m">  # listens on 127.0.0.1:8080</span>
+
+<span class="c">$ curl 127.0.0.1:8080/v1/chat/completions \</span>
+    -d '{"messages": [{"role": "user", "content": "hi"}]}'
+
+<span class="c">$ curl 127.0.0.1:8080/v1/messages \</span>
+    -d '{"max_tokens": 256,
+         "messages": [{"role": "user", "content": "hi"}]}'</pre>
+  </div>
+</section>
+
+<section class="ark-section" id="hardware" aria-labelledby="hw-title">
+  <div class="ark-head"><h2 id="hw-title">What it runs on</h2></div>
+  <div class="lx-hw">
+    <div class="ark-result-row"><span>Apple silicon · macOS 26 or later</span><strong>Supported</strong></div>
+    <div class="ark-result-row"><span>NVIDIA RTX 30, 40 and 50 series · Windows and Linux</span><strong>Supported</strong></div>
+    <div class="ark-result-row"><span>AMD Radeon · Windows and Linux</span><strong>Preview, build from source</strong></div>
+    <div class="ark-result-row"><span>Any 64-bit CPU</span><strong>Works, slowly</strong></div>
+  </div>
+</section>
+
+<section class="ark-section" id="open-source" aria-labelledby="oss-title">
+  <div class="ark-head">
+    <h2 id="oss-title">Open source on Thanksgiving</h2>
+    <p class="lede">Larch goes open source on Thursday 26 November, under the Apache 2.0 licence. That day the code, the installer and the docs go up on GitHub, and this page gets the install command.</p>
+  </div>
+</section>
+
+</main>
+<footer class="ark-imprint">
+  <a href="#features">Features</a><a href="#developers">Developers</a><a href="#open-source">Open source</a><a href="https://arkaya-labs.com">Made by Arkaya Labs</a>
+  <p class="fine">Copyright 2026 the Arkaya Labs authors · Painting: A larch forest in autumn.</p>
+</footer>
+<section class="ark-reveal" aria-label="A larch forest in autumn">
+  <div class="ark-lead" aria-hidden="true"></div>
+  <div class="ark-painting-pair">
+    <img class="ark-final-painting ark-painting-day" src="assets/larch.webp" width="2576" height="1438" alt="A painting of a hillside of golden larch forest in autumn, a wooden fire lookout tower above the trees and a skein of geese crossing a peach morning sky" loading="lazy" decoding="async" data-live="larch">
+    <img class="ark-final-painting ark-painting-night" src="assets/larch.night.webp" width="2576" height="1438" alt="The same forest under a full moon, the lookout tower's window lit and the larch tops silver in the moonlight" loading="lazy" decoding="async" aria-hidden="true">
+  </div>
+</section>
+</div>
+</div>
+</div>
+</body>
+</html>
