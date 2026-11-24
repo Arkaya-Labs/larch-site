@@ -1,7 +1,8 @@
 /* The demo carousel, moved here from the Arkaya Labs site. It advances by itself and pauses when touched.
-   To add a recording: set videoSrc (an MP4 under assets/demos/) and posterSrc (its first frame). A configured video
-   replaces the whole app preview and plays to its end before the carousel moves on. A new demo also needs its tab
-   button in index.html. */
+   A demo is either a recording (videoSrc: an MP4 under assets/demos/, posterSrc: its first frame) or an animated
+   concept of the app (the text fields plus assets/demos/<key>.gif and <key>-still.png). A recording plays to its end
+   before the carousel moves on; if it cannot play, its poster stays and the timer takes over. A new demo also needs
+   its tab button in index.html. */
 (() => {
   'use strict';
   const demos = [
@@ -14,12 +15,14 @@
       caption: 'Larch picks the passages that matter and reads the papers side by side.'
     },
     {
-      key: 'web', videoSrc: 'assets/demos/research.mp4', posterSrc: 'assets/demos/research-poster.jpg',
-      attachment: 'Web search on',
-      question: 'Find an answer and show me the sources.',
-      activity: 'Looking for sources', detail: 'Reading the pages it found',
+      key: 'research', videoSrc: 'assets/demos/research.mp4', posterSrc: 'assets/demos/research-poster.jpg',
       title: 'Research, start to finish.',
       caption: 'Larch plans the research, splits it across helpers that read the web at the same time, checks the quotes and writes a report with its sources. Parts sped up, waits trimmed; the full run took about 3.5 minutes.'
+    },
+    {
+      key: 'tasks', videoSrc: 'assets/demos/tasks.mp4', posterSrc: 'assets/demos/tasks-poster.jpg',
+      title: 'Tasks that repeat on a schedule.',
+      caption: 'Write the goal and its steps, pick when it repeats, and Larch runs it on this computer: here, a look at new open-weight models. Parts sped up, waits trimmed. The task ran 2 steps in about a minute.'
     }
   ];
 
@@ -53,7 +56,7 @@
   let scrollFrame = false;
   let lastWidth = 0;
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-  const playsVideo = state => Boolean(state.demo.videoSrc) && !failedVideos.has(state.demo.key);
+  const playsVideo = state => Boolean(state.demo.videoSrc);
   const states = [];
 
   // End clones let either arrow cross the first/last boundary seamlessly.
@@ -77,18 +80,17 @@
       video:stage.querySelector('.ark-recording'),
       start:stage.querySelector('.ark-video-start')
     };
-    for (const [selector,key] of [
-      ['.ark-attachment','attachment'],['.ark-user-message','question'],
-      ['.ark-activity-title','activity'],['.ark-activity-detail','detail']
-    ]) stage.querySelector(selector).textContent=demo[key];
-    state.image.alt='Illustrative '+demo.key+' workflow animation';
-    state.image.src='assets/demos/'+demo.key+'-still.png';
+    if (!demo.videoSrc) {
+      for (const [selector,key] of [
+        ['.ark-attachment','attachment'],['.ark-user-message','question'],
+        ['.ark-activity-title','activity'],['.ark-activity-detail','detail']
+      ]) stage.querySelector(selector).textContent=demo[key];
+      state.image.alt='Illustrative '+demo.key+' workflow animation';
+      state.image.src='assets/demos/'+demo.key+'-still.png';
+    }
     state.video.addEventListener('error',()=>{
-      if (!state.video.hidden) {
-        failedVideos.add(demo.key);
-        updatePlayback();
-        scheduleAutomatic();
-      }
+      failedVideos.add(demo.key);
+      if (state.slot===currentSlot) scheduleAutomatic();
     });
     state.video.addEventListener('playing',()=>{state.start.hidden=true;});
     // A recording moves the carousel on when it ends, unless someone is watching closely; then it plays again.
@@ -125,7 +127,8 @@
   function scheduleAutomatic() {
     clearAutomatic();
     if (manualInteraction || reduced || paused || !inView || document.hidden || hovering || focused || dragging) return;
-    if (playsVideo(states[currentSlot])) return;  // the recording's 'ended' moves on instead
+    const current=states[currentSlot];
+    if (playsVideo(current) && !failedVideos.has(current.demo.key)) return;  // the recording's 'ended' moves on instead
     autoTimer=setTimeout(()=>{
       autoTimer=null;
       moveRelative(1,false);
@@ -137,20 +140,23 @@
     const allow=!paused && inView && !document.hidden;
     states.forEach(state=>{
       const selected=state.slot===currentSlot;
-      const src='assets/demos/'+state.demo.key+(allow && selected && !playsVideo(state)?'.gif':'-still.png');
-      if (state.image.getAttribute('src')!==src) state.image.src=src;
-      const useVideo=selected && playsVideo(state);
+      if (!playsVideo(state)) {
+        const src='assets/demos/'+state.demo.key+(allow && selected?'.gif':'-still.png');
+        if (state.image.getAttribute('src')!==src) state.image.src=src;
+      }
+      // A recording's slide always shows its video element: the poster while it waits, the video once selected.
+      const useVideo=playsVideo(state);
       state.video.hidden=!useVideo;
-      state.app.hidden=Boolean(useVideo);
+      state.app.hidden=useVideo;
       state.start.hidden=true;
-      if (!useVideo || !allow) state.video.pause();
+      if (!selected || !allow) state.video.pause();
       if (useVideo) {
-        if (state.video.getAttribute('src')!==state.demo.videoSrc) {
+        if (state.demo.posterSrc && !state.video.getAttribute('poster')) state.video.poster=state.demo.posterSrc;
+        if (selected && state.video.getAttribute('src')!==state.demo.videoSrc) {
           state.video.src=state.demo.videoSrc;
-          if (state.demo.posterSrc) state.video.poster=state.demo.posterSrc;
           state.video.load();
         }
-        if (allow) {
+        if (selected && allow) {
           const promise=state.video.play();
           if (promise && promise.catch) promise.catch(()=>{
             if (currentSlot===state.slot && !state.video.hidden && !paused && inView && !document.hidden) state.start.hidden=false;
