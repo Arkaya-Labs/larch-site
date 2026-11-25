@@ -7,17 +7,24 @@
   'use strict';
   const demos = [
     {
-      key: 'papers', videoSrc: '', posterSrc: '',
-      attachment: 'Attached papers · 4 PDFs',
-      question: 'Summarize the papers in here.',
-      activity: 'Reading papers', detail: 'Picking the relevant passages',
-      title: 'Four papers, one request.',
-      caption: 'Larch picks the passages that matter and reads the papers side by side.'
+      key: 'documents', videoSrc: 'assets/demos/documents.mp4', posterSrc: 'assets/demos/documents-poster.jpg',
+      title: 'Ask your own documents.',
+      caption: 'Attach a file and ask about your own situation: here, an IRS guide on Roth IRAs. Larch reads it on this computer and writes the answer live. Parts sped up, waits trimmed.'
     },
     {
       key: 'research', videoSrc: 'assets/demos/research.mp4', posterSrc: 'assets/demos/research-poster.jpg',
       title: 'Research, start to finish.',
       caption: 'Larch plans the research, splits it across helpers that read the web at the same time, checks the quotes and writes a report with its sources. Parts sped up, waits trimmed; the full run took about 3.5 minutes.'
+    },
+    {
+      key: 'web-search', videoSrc: 'assets/demos/web-search.mp4', posterSrc: 'assets/demos/web-search-poster.jpg',
+      title: 'Several web searches at once.',
+      caption: 'One question about three companies becomes three web searches that run at the same time, then one answer with its sources. Parts sped up, waits trimmed; it answered in about a minute.'
+    },
+    {
+      key: 'memory', videoSrc: 'assets/demos/memory.mp4', posterSrc: 'assets/demos/memory-poster.jpg',
+      title: 'It remembers what you tell it.',
+      caption: 'Larch keeps a memory of you on this computer. Asked how to reach a marathon goal, it recalled the race, the goal time and that you are vegetarian. Parts sped up, waits trimmed.'
     },
     {
       key: 'tasks', videoSrc: 'assets/demos/tasks.mp4', posterSrc: 'assets/demos/tasks-poster.jpg',
