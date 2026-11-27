@@ -4,8 +4,9 @@ Plain static HTML with no build step. Serve this folder, e.g. `python3 -m http.s
 http://localhost:8000. Opening index.html straight from disk also works, but browsers block WebGL from
 reading files there, so the stars and the lit tower window will not move.
 
-- vercel.json: no build step. The install section links to /install.sh and /install.ps1; those URLs
-  need redirects here to the real installers.
+- vercel.json: no build step. The install commands download the installers straight from the latest
+  GitHub release of Arkaya-Labs/Larch, so no redirects are needed. When Windows and Linux builds ship,
+  update the install note, the hardware question and operatingSystem in the JSON-LD.
 - Search and AI crawlers: the <head> has a canonical URL, Open Graph and Twitter card tags (card image
   assets/og/larch.jpg) and JSON-LD (SoftwareApplication, FAQPage, VideoObject). Keep the FAQ JSON-LD in step
   with the Questions section. robots.txt, sitemap.xml and llms.txt sit next to index.html.
