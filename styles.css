@@ -762,7 +762,8 @@ html.page-larch[data-theme="dark"] { --lx-accent: #f08a4b; --lx-on-accent: #1a12
 .lx-kind { display: block; margin-bottom: 12px; }
 .lx-dev { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
 .lx-dev .lede { margin-top: 16px; }
-.lx-term { margin: 0; padding: 22px 24px; border-radius: 14px; background: var(--tile); color: var(--tile-ink); font: 13.5px/1.75 var(--mono); white-space: pre-wrap; word-break: break-word; }
+.lx-term { margin: 0; min-width: 0; max-width: 100%; padding: 22px 24px; border-radius: 14px; background: var(--tile); color: var(--tile-ink); font: 13.5px/1.75 var(--mono); white-space: pre; overflow-x: auto; }
+.lx-term .p { -webkit-user-select: none; user-select: none; }
 .lx-term .c { color: var(--gold); } .lx-term .m { color: var(--tile-ink-2); } .lx-term .ok { color: var(--keep); }
 .lx-hw { max-width: 760px; margin: 0 auto; font-size: 15px; }
 .lx-install-lines { max-width: 640px; margin: 24px auto; text-align: left; }
