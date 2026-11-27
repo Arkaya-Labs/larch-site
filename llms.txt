@@ -1,0 +1,16 @@
+# Larch
+
+> Larch is a free, open-source AI engine from Arkaya Labs that runs open models
+> (Llama 3.x, Mistral, Qwen 2.5, Qwen 3, Qwen 3.5) on your own Mac or PC. It has a
+> built-in agent, a desktop app and a local API compatible with OpenAI and Anthropic.
+> Apache 2.0. Supports Apple silicon (macOS 26 or later) and NVIDIA RTX 30, 40 and 50
+> series on Windows and Linux.
+
+## On this site
+- [Install](https://larch-engine.com/#install): one command for macOS, Linux and Windows
+- [Local API](https://larch-engine.com/#developers): `larch serve`, OpenAI and Anthropic endpoints
+- [Questions](https://larch-engine.com/#faq): price, privacy, hardware, models, comparisons
+
+## Elsewhere
+- [Benchmarks](https://arkaya-labs.com/research): Larch against llama.cpp, Ollama, MLX and vLLM
+- [Source code](https://github.com/arkaya-labs)
