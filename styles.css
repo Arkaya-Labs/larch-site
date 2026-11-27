@@ -702,9 +702,10 @@ main { position: relative; z-index: 1; }
 ::view-transition-new(ak-theme-toggle) { animation: none; }
 @media (prefers-reduced-motion: reduce) { ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
 
-/* The bar melts into the page: no band and no rule at rest. While the page is scrolling, a paper-coloured veil fades
-   down from the top edge so the links stay readable over passing content; it fades away once scrolling stops. The
-   veil is a colour under a static mask, so it turns with the theme like everything else. */
+/* The bar melts into the page: no band and no rule at the top of the page. Once the page is scrolled down, a
+   paper-coloured veil fades down from the top edge so the links stay readable over the content under them, and it
+   stays until the page is back at the top. The veil is a colour under a static mask, so it turns with the theme like
+   everything else. */
 .ark-header { background: transparent !important; border-bottom-color: transparent !important; }
 .ark-header::before {
   content: ''; position: absolute; inset: 0 0 -36px 0; z-index: -1; pointer-events: none;
@@ -713,7 +714,7 @@ main { position: relative; z-index: 1; }
   mask-image: linear-gradient(to bottom, #000 0, #000 55%, rgba(0,0,0,.6) 72%, rgba(0,0,0,.2) 88%, transparent 100%);
   transition: opacity .6s var(--ease), background-color var(--dusk) var(--ease);
 }
-.ark-header.scrolled::before { opacity: .97; }
+.ark-header.scrolled::before { opacity: 1; }
 :root.swap .ark-header::before { transition: opacity .6s var(--ease) !important; }
 
 /* Carousel arrows in the site's own hand: a hairline ring like the sun/moon switch, a slender drawn arrow with a
@@ -814,9 +815,9 @@ main { position: relative; z-index: 1; }
 /* the home headline breaks after "own," on wide screens; on phones it wraps on its own, balanced */
 .br-wide { display: inline; }
 @media (max-width: 560px) { .br-wide { display: none; } .ark-hero h1 { text-wrap: balance; } }
-/* four items in the bar: on small phones the wordmark shortens to "Arkaya", and to the mark alone on the narrowest */
+/* small phones: the bar tightens a little. "Larch" is short, so unlike the Arkaya Labs site the wordmark stays on
+   every phone, down to 320 px, beside the Arkaya Labs link and the switch */
 @media (max-width: 400px) { .ark-header nav { gap: 10px; } nav a { font-size: 11.5px; } .ark-brand > span:not(.mkw) { display: none; } }
-@media (max-width: 340px) { .ark-brand { font-size: 0; gap: 0; } }
 
 /* Larch, the product page (larch.html). Everything else on it is the shared Arkaya machinery above. */
 /* Accent: the lookout tower's lamp. Ember by day, its glow by night; it takes the place of the Arkaya green here. */
