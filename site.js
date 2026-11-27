@@ -23,15 +23,13 @@ const paint = () => {
 };
 const queue = () => { if (!queued) { queued = true; requestAnimationFrame(paint); } };
 addEventListener('scroll', queue, { passive: true });
-/* The bar behind the nav shows only while the page is moving, and fades away whenever scrolling stops, anywhere on
-   the page. The logo, links and switch always stay. */
-let idle = null;
-addEventListener('scroll', () => {
-  if (!header) return;
-  header.classList.add('scrolled');
-  clearTimeout(idle);
-  idle = setTimeout(() => header.classList.remove('scrolled'), 700);
-}, { passive: true });
+/* The bar behind the nav shows whenever the page is scrolled away from the top, moving or not, so the logo, links
+   and switch never sit straight on the text passing under them. At the very top there is nothing under the bar, and
+   it melts into the page. (It used to fade out 0.7 s after scrolling stopped, which left the links over whatever text
+   was beneath them.) */
+const veil = () => { if (header) header.classList.toggle('scrolled', viewport.scrollTop > 4); };
+addEventListener('scroll', veil, { passive: true });
+veil();                                              // a reload or a #link can open the page part-way down
 addEventListener('resize', queue, { passive: true });
 paint();
 })();
