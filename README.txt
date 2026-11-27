@@ -17,4 +17,5 @@ reading files there, so the stars and the lit tower window will not move.
   button in index.html. A demo without a recording shows an animated concept (assets/demos/<key>.gif).
 - styles.css: the Arkaya Labs site's stylesheet plus the Larch section at the end.
 
-Footer: "Copyright 2026 the Arkaya Labs authors".
+Footer: "Copyright 2026 the Arkaya Labs authors". Contact on this site: larch@arkaya-labs.com (footer and the
+"Who makes Larch?" answer). The Arkaya Labs site uses hello@arkaya-labs.com.

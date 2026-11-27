@@ -15,3 +15,6 @@
 ## Elsewhere
 - [Benchmarks](https://arkaya-labs.com/research): Larch against llama.cpp, Ollama, MLX and vLLM
 - [Source code](https://github.com/Arkaya-Labs/Larch)
+
+## Contact
+- larch@arkaya-labs.com: questions about Larch
