@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f3ebdc">
-<meta name="description" content="Larch runs open models on your own computer, with a desktop app, an agent and a local API. Free and open source, from Arkaya Labs.">
-<title>Larch: fast, private AI on your own computer</title>
+<meta name="description" content="Free, open-source AI engine that runs Qwen, Llama and Mistral models on your Mac, with a built-in agent, a desktop app and an OpenAI-compatible local API. Windows and Linux are coming soon.">
+<title>Larch: free, open-source local AI for your Mac</title>
+<link rel="canonical" href="https://larch-engine.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Larch">
+<meta property="og:title" content="Larch: free, open-source local AI for your Mac">
+<meta property="og:description" content="An AI engine with a built-in agent, for your own Mac.">
+<meta property="og:url" content="https://larch-engine.com/">
+<meta property="og:image" content="https://larch-engine.com/assets/og/larch.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://larch-engine.com/#app", "name": "Larch", "url": "https://larch-engine.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later (Apple silicon)", "description": "Free, open-source AI engine for your Mac, with a built-in agent, a desktop app and an OpenAI- and Anthropic-compatible local API.", "license": "https://www.apache.org/licenses/LICENSE-2.0", "downloadUrl": "https://github.com/Arkaya-Labs/Larch/releases/latest", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "@id": "https://arkaya-labs.com/#org", "name": "Arkaya Labs", "url": "https://arkaya-labs.com/"}, "softwareVersion": "0.1.0", "sameAs": ["https://github.com/Arkaya-Labs/Larch"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Larch free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Larch is free and open source under the Apache 2.0 licence."}}, {"@type": "Question", "name": "Is Larch an engine or an agent?", "acceptedAnswer": {"@type": "Answer", "text": "Larch is an AI engine with an agent built in. It is one product: the engine runs the models, and the agent, the desktop app and the local API all come with it in one install. The agent and the desktop app are in preview, so their settings may change."}}, {"@type": "Question", "name": "Does Larch work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The model runs on your own computer. Larch only goes online when you download a model or use a tool that needs the web, such as web search or research."}}, {"@type": "Question", "name": "Does Larch collect my data?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your chats and files stay on your computer's disk, and Larch sends no usage data or analytics."}}, {"@type": "Question", "name": "What hardware does Larch need?", "acceptedAnswer": {"@type": "Answer", "text": "Version 0.1.0 installs on Macs with Apple silicon and macOS 26 or later. Windows and Linux builds for NVIDIA RTX 30, 40 and 50 series GPUs are coming soon; the engine already supports those cards when built from source. AMD Radeon support is in preview and needs a build from source. Any 64-bit CPU works, slowly."}}, {"@type": "Question", "name": "Which models can Larch run?", "acceptedAnswer": {"@type": "Answer", "text": "GGUF files of Llama 3.x, Mistral, Qwen 2.5, Qwen 3 and Qwen 3.5, both dense and mixture-of-experts. Files sold as Q4_K_M, Q5_K_M, Q6_K, Q8_0, Q3_K_M and similar load; BF16, Q4_1, Q5_1, the IQ formats and MXFP4 do not."}}, {"@type": "Question", "name": "Can I use Larch with Claude Code or other coding tools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. larch serve starts a local server that speaks the OpenAI and Anthropic APIs. Claude Code, Qwen Code and OpenCode connect to it on localhost, and so do many SDKs once you change their base URL."}}, {"@type": "Question", "name": "How does Larch compare with Ollama?", "acceptedAnswer": {"@type": "Answer", "text": "On one RTX 5070 Ti on 25 November 2026, with Llama 3.1 8B and Qwen 2.5 7B, Larch's total throughput was 46 to 76 % higher than Ollama 0.40.18's with 8 and 16 chats at once. With a single chat, the two were within measurement noise."}}, {"@type": "Question", "name": "How does Larch compare with llama.cpp and vLLM?", "acceptedAnswer": {"@type": "Answer", "text": "On the same RTX 5070 Ti on 25 November 2026, with the same GGUF files, Larch's total throughput was 17 % above llama.cpp b12723's with 8 chats and 31 to 36 % above with 16, and within noise with one chat, where its 99th-percentile time to first token was 33 to 35 % higher. Against vLLM 0.34.0, which ran different (AWQ) weights, Larch was 6 to 11 % lower on multi-turn chats at 4 and 8. Every result, including where Larch is slower, is at arkaya-labs.com/research."}}, {"@type": "Question", "name": "Who makes Larch?", "acceptedAnswer": {"@type": "Answer", "text": "Arkaya Labs, a small research lab. Its benchmarks, including the results where Larch is slower, are published at arkaya-labs.com/research."}}]}, {"@type": "VideoObject", "name": "Larch: ask your own documents", "description": "Larch reads an IRS guide on Roth IRAs on an Apple M5 and answers a question about it.", "thumbnailUrl": "https://larch-engine.com/assets/demos/documents-poster.jpg", "contentUrl": "https://larch-engine.com/assets/demos/documents.mp4", "uploadDate": "2026-11-25"}]}</script>
 <link rel="icon" href="assets/larch-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,16 +34,16 @@
 <div class="ark-content">
 <header class="ark-header">
   <a class="ark-brand" href="index.html" aria-label="Larch, home"><span class="mkw"><img class="mk light" src="assets/larch-mark.svg" alt=""><img class="mk dark" src="assets/larch-mark-dark.svg" alt=""></span>Larch</a>
-  <nav aria-label="Site"><a class="lx-wide" href="#features">Features</a><a class="lx-wide" href="#developers">Developers</a><a href="https://arkaya-labs.com">Arkaya Labs</a><button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="bite"><rect width="24" height="24" fill="#fff"/><circle class="bite" cx="30" cy="4" r="7" fill="#000"/></mask></defs><g class="rays" stroke-linecap="round" fill="none"><path d="M12 1.5v2.4M12 20.1v2.4M1.5 12h2.4M20.1 12h2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M19.4 4.6l-1.7 1.7M6.3 17.7l-1.7 1.7"/></g><circle class="disc" cx="12" cy="12" r="5.6" mask="url(#bite)"/></svg></button></nav>
+  <nav aria-label="Site"><a class="lx-wide" href="#features">Features</a><a class="lx-wide" href="#developers">Developers</a><a href="#install">Install</a><a href="https://github.com/Arkaya-Labs/Larch">GitHub</a><button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="bite"><rect width="24" height="24" fill="#fff"/><circle class="bite" cx="30" cy="4" r="7" fill="#000"/></mask></defs><g class="rays" stroke-linecap="round" fill="none"><path d="M12 1.5v2.4M12 20.1v2.4M1.5 12h2.4M20.1 12h2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M19.4 4.6l-1.7 1.7M6.3 17.7l-1.7 1.7"/></g><circle class="disc" cx="12" cy="12" r="5.6" mask="url(#bite)"/></svg></button></nav>
 </header>
 <main>
 <section class="ark-hero" id="ark-top">
   <div class="ark-hero-main">
     <div class="ark-eyebrow">FROM ARKAYA LABS</div>
     <h1>Larch</h1>
-    <p class="ark-intro">Fast, private AI on the computer you already own. Larch runs open models on your Mac or PC, with a desktop app, an agent and a local API.</p>
-    <p class="lx-launch">Open source on Thanksgiving, 26 November.</p>
-    <div class="ark-cta"><a class="btn" href="#features">What it does<svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2c4.4-.3 9-.3 13.8 0"/><path d="M13.6 7.4c1.4 1.9 3 3.5 4.9 4.8-1.9 1.2-3.5 2.8-4.9 4.6"/></svg></a><a class="btn ghost" href="#developers">For developers</a></div>
+    <p class="ark-intro">Larch is a free, open-source AI engine for your own Mac. It runs open models with a built-in agent, a desktop app and a local API compatible with OpenAI and Anthropic. Windows and Linux are coming soon.</p>
+    <p class="lx-launch">Open source since 26 November 2026 · Apache 2.0 · Version 0.1.0</p>
+    <div class="ark-cta"><a class="btn" href="#install">Install Larch<svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.2c4.4-.3 9-.3 13.8 0"/><path d="M13.6 7.4c1.4 1.9 3 3.5 4.9 4.8-1.9 1.2-3.5 2.8-4.9 4.6"/></svg></a><a class="btn ghost" href="https://github.com/Arkaya-Labs/Larch">View on GitHub</a></div>
   </div>
 </section>
 
@@ -124,13 +133,13 @@
       <p class="lede"><code>larch serve</code> starts a server on your own machine that speaks the OpenAI and Anthropic APIs. Many SDKs and tools work once you point their base URL at it.</p>
       <p class="lede">It loads GGUF files of Llama 3.x, Mistral, Qwen 2.5, Qwen 3 and Qwen 3.5, dense and mixture-of-experts.</p>
     </div>
-    <pre class="lx-term" aria-label="Terminal example"><span class="c">$ larch serve -m qwen3-8b-q4_k_m.gguf</span>
+    <pre class="lx-term" aria-label="Terminal example"><span class="c"><span class="p" aria-hidden="true">$ </span>larch serve -m qwen3-8b-q4_k_m.gguf</span>
 <span class="m">  # listens on 127.0.0.1:8080</span>
 
-<span class="c">$ curl 127.0.0.1:8080/v1/chat/completions \</span>
+<span class="c"><span class="p" aria-hidden="true">$ </span>curl 127.0.0.1:8080/v1/chat/completions \</span>
     -d '{"messages": [{"role": "user", "content": "hi"}]}'
 
-<span class="c">$ curl 127.0.0.1:8080/v1/messages \</span>
+<span class="c"><span class="p" aria-hidden="true">$ </span>curl 127.0.0.1:8080/v1/messages \</span>
     -d '{"max_tokens": 256,
          "messages": [{"role": "user", "content": "hi"}]}'</pre>
   </div>
@@ -140,22 +149,45 @@
   <div class="ark-head"><h2 id="hw-title">What it runs on</h2></div>
   <div class="lx-hw">
     <div class="ark-result-row"><span>Apple silicon · macOS 26 or later</span><strong>Supported</strong></div>
-    <div class="ark-result-row"><span>NVIDIA RTX 30, 40 and 50 series · Windows and Linux</span><strong>Supported</strong></div>
+    <div class="ark-result-row"><span>NVIDIA RTX 30, 40 and 50 series · Windows and Linux</span><strong>Build from source; installer coming soon</strong></div>
     <div class="ark-result-row"><span>AMD Radeon · Windows and Linux</span><strong>Preview, build from source</strong></div>
     <div class="ark-result-row"><span>Any 64-bit CPU</span><strong>Works, slowly</strong></div>
   </div>
 </section>
 
-<section class="ark-section" id="open-source" aria-labelledby="oss-title">
-  <div class="ark-head">
-    <h2 id="oss-title">Open source on Thanksgiving</h2>
-    <p class="lede">Larch goes open source on Thursday 26 November, under the Apache 2.0 licence. That day the code, the installer and the docs go up on GitHub, and this page gets the install command.</p>
+<section class="ark-section" id="install" aria-labelledby="install-title">
+  <div class="lx-dev">
+    <div>
+      <span class="kind lx-kind">Open source · Apache 2.0</span>
+      <h2 id="install-title">Install Larch</h2>
+      <p class="lede">Run one command. The Larch Setup window asks whether you want the app, the command line tools or both, and offers a model that fits your memory.</p>
+      <p class="lede">Version 0.1.0 is for Macs with Apple silicon and macOS 26 or later. Windows and Linux builds are coming soon.</p>
+      <p class="lede"><a href="https://github.com/Arkaya-Labs/Larch">Source code</a> · <a href="https://github.com/Arkaya-Labs/Larch/blob/main/docs/install.md">Install guide</a> · <a href="https://github.com/Arkaya-Labs/Larch/tree/main/docs">Documentation</a> · <a href="https://github.com/Arkaya-Labs/Larch/blob/main/CHANGELOG.md">Release notes</a></p>
+    </div>
+    <pre class="lx-term" aria-label="Install command"><span class="m"># macOS (Apple silicon)</span>
+<span class="c"><span class="p" aria-hidden="true">$ </span>curl -fsSL https://larch-engine.com/install.sh | bash</span></pre>
+  </div>
+</section>
+
+<section class="ark-section" id="faq" aria-labelledby="faq-title">
+  <div class="ark-head"><h2 id="faq-title">Questions</h2></div>
+  <div class="lx-faqs">
+    <details class="lx-faq"><summary><h3>Is Larch free?</h3></summary><p>Yes. Larch is free and open source under the Apache 2.0 licence.</p></details>
+    <details class="lx-faq"><summary><h3>Is Larch an engine or an agent?</h3></summary><p>Larch is an AI engine with an agent built in. It is one product: the engine runs the models, and the agent, the desktop app and the local API all come with it in one install. The agent and the desktop app are in preview, so their settings may change.</p></details>
+    <details class="lx-faq"><summary><h3>Does Larch work offline?</h3></summary><p>Yes. The model runs on your own computer. Larch only goes online when you download a model or use a tool that needs the web, such as web search or research.</p></details>
+    <details class="lx-faq"><summary><h3>Does Larch collect my data?</h3></summary><p>No. Your chats and files stay on your computer's disk, and Larch sends no usage data or analytics.</p></details>
+    <details class="lx-faq"><summary><h3>What hardware does Larch need?</h3></summary><p>Version 0.1.0 installs on Macs with Apple silicon and macOS 26 or later. Windows and Linux builds for NVIDIA RTX 30, 40 and 50 series GPUs are coming soon; the engine already supports those cards when built from source. AMD Radeon support is in preview and needs a build from source. Any 64-bit CPU works, slowly.</p></details>
+    <details class="lx-faq"><summary><h3>Which models can Larch run?</h3></summary><p>GGUF files of Llama 3.x, Mistral, Qwen 2.5, Qwen 3 and Qwen 3.5, both dense and mixture-of-experts. Files sold as Q4_K_M, Q5_K_M, Q6_K, Q8_0, Q3_K_M and similar load; BF16, Q4_1, Q5_1, the IQ formats and MXFP4 do not.</p></details>
+    <details class="lx-faq"><summary><h3>Can I use Larch with Claude Code or other coding tools?</h3></summary><p>Yes. <code>larch serve</code> starts a local server that speaks the OpenAI and Anthropic APIs. Claude Code, Qwen Code and OpenCode connect to it on localhost, and so do many SDKs once you change their base URL.</p></details>
+    <details class="lx-faq"><summary><h3>How does Larch compare with Ollama?</h3></summary><p>On one RTX 5070 Ti on 25 November 2026, with Llama 3.1 8B and Qwen 2.5 7B, Larch's total throughput was 46 to 76 % higher than Ollama 0.40.18's with 8 and 16 chats at once. With a single chat, the two were within measurement noise.</p></details>
+    <details class="lx-faq"><summary><h3>How does Larch compare with llama.cpp and vLLM?</h3></summary><p>On the same RTX 5070 Ti on 25 November 2026, with the same GGUF files, Larch's total throughput was 17 % above llama.cpp b12723's with 8 chats and 31 to 36 % above with 16, and within noise with one chat, where its 99th-percentile time to first token was 33 to 35 % higher. Against vLLM 0.34.0, which ran different (AWQ) weights, Larch was 6 to 11 % lower on multi-turn chats at 4 and 8. Every result, including where Larch is slower, is at <a href="https://arkaya-labs.com/research">arkaya-labs.com/research</a>.</p></details>
+    <details class="lx-faq"><summary><h3>Who makes Larch?</h3></summary><p>Arkaya Labs, a small research lab. Its benchmarks, including the results where Larch is slower, are published at <a href="https://arkaya-labs.com/research">arkaya-labs.com/research</a>.</p></details>
   </div>
 </section>
 
 </main>
 <footer class="ark-imprint">
-  <a href="#features">Features</a><a href="#developers">Developers</a><a href="#open-source">Open source</a><a href="https://arkaya-labs.com">Made by Arkaya Labs</a>
+  <a href="#features">Features</a><a href="#developers">Developers</a><a href="#install">Install</a><a href="#faq">Questions</a><a href="https://github.com/Arkaya-Labs/Larch">GitHub</a><a href="https://arkaya-labs.com">Made by Arkaya Labs</a>
   <p class="fine">Copyright 2026 the Arkaya Labs authors · Painting: A larch forest in autumn.</p>
 </footer>
 <section class="ark-reveal" aria-label="A larch forest in autumn">

@@ -3,5 +3,9 @@
   "installCommand": "",
   "buildCommand": "",
   "outputDirectory": ".",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/install.sh", "destination": "https://github.com/Arkaya-Labs/Larch/releases/latest/download/install.sh", "permanent": false },
+    { "source": "/install.ps1", "destination": "https://github.com/Arkaya-Labs/Larch/releases/latest/download/install.ps1", "permanent": false }
+  ]
 }
