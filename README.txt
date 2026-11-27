@@ -5,9 +5,9 @@ http://localhost:8000. Opening index.html straight from disk also works, but bro
 reading files there, so the stars and the lit tower window will not move.
 
 - vercel.json: no build step. /install.sh and /install.ps1 redirect (302) to the installers in the
-  latest GitHub release of Arkaya-Labs/Larch. The page shows only the macOS command, since 0.1.0 is
-  Mac-only. When Windows and Linux builds ship, add the Windows command back and update the install note,
-  the hero, the hardware question, the hardware table and operatingSystem in the JSON-LD.
+  latest GitHub release of Arkaya-Labs/Larch. Larch is presented for macOS, Windows and Linux. Version 0.1.0
+  ships for Macs only, so the install note and the hardware answer say the Windows and Linux installers
+  follow soon; when they ship, remove those two notes and "installer coming soon" in the hardware table.
 - Search and AI crawlers: the <head> has a canonical URL, Open Graph and Twitter card tags (card image
   assets/og/larch.jpg) and JSON-LD (SoftwareApplication, FAQPage, VideoObject). Keep the FAQ JSON-LD in step
   with the Questions section. robots.txt, sitemap.xml and llms.txt sit next to index.html.
